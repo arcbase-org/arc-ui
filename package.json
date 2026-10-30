@@ -1,6 +1,6 @@
 {
   "name": "@arcbaseorg/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Componenti React in vetro: finestre, sidebar, bottoni connessi, liste a fisarmonica, drawer e widget in stile iOS. Aggiornamento Dolomiti.",
   "license": "AGPL-3.0-only",
   "author": "ticly <info@ticly.it>",
