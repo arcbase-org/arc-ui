@@ -1,0 +1,50 @@
+# Pubblica arc UI anche su GitHub Packages, così compare nella sezione
+# "Packages" del repository. Su GitHub il nome deve avere lo scope del
+# proprietario del repository: qui è @arcbase-org/ui, mentre su npm resta
+# @arcbaseorg/ui. Il token è quello automatico di GitHub Actions.
+name: GitHub Packages
+
+on:
+  push:
+    # Ogni nuova versione: v0.1.3, v0.2.0…
+    tags: ["v*"]
+    # La prima volta parte da solo, quando questo file arriva su main
+    branches: [main]
+    paths: [".github/workflows/github-packages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          scope: "@arcbase-org"
+
+      - run: npm ci
+
+      - name: Nome e registro di GitHub Packages
+        run: |
+          npm pkg set name=@arcbase-org/ui
+          npm pkg delete publishConfig.access
+          npm pkg set publishConfig.registry=https://npm.pkg.github.com
+
+      # npm publish fa prima il controllo dei tipi e la build (prepublishOnly)
+      - name: Pubblica, se questa versione non c'è ancora
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "@arcbase-org/ui@$VERSION" version > /dev/null 2>&1; then
+            echo "La versione $VERSION è già su GitHub Packages"
+          else
+            npm publish
+          fi
