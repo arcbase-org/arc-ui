@@ -8,6 +8,8 @@ Componenti React in vetro per interfacce web: finestre e split window, sidebar c
 
 Un progetto open source di ArcBase, sostenuto da [ticly](https://www.ticly.it).
 
+<a href="https://buymeacoffee.com/arcbase"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Offrici un caffè su Buy Me a Coffee" height="48"></a>
+
 > **Aggiornamento Dolomiti (0.1).** Le Dolomiti fanno da sfondo alle finestre e alle anteprime: le abbiamo scelte perché arc UI vuole essere una boccata d'aria fresca per le interfacce, proprio come le Dolomiti.
 
 ## Installazione
@@ -117,6 +119,10 @@ npm run build
 ```
 
 La build genera `dist/` con il codice ESM, i tipi e `styles.css`. La documentazione con le anteprime dal vivo si compila con `npm run docs -- --out <cartella>`.
+
+## Sostieni il progetto
+
+arc UI è gratuito e open source. Se ti è utile, [offrici un caffè su Buy Me a Coffee](https://buymeacoffee.com/arcbase): ci aiuta a continuare a svilupparlo.
 
 ## Licenza
 

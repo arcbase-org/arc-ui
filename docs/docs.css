@@ -75,6 +75,27 @@ body {
   color: #fff;
 }
 
+/* Buy Me a Coffee: il giallo del marchio */
+.doc-top-links .doc-coffee {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px 6px 11px;
+  border-radius: 999px;
+  background: #ffdd00;
+  color: #0f0d14;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.doc-top-links .doc-coffee:hover {
+  color: #0f0d14;
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
 /* ── Struttura ── */
 .doc-layout {
   display: grid;
@@ -394,9 +415,14 @@ body {
   color: #fff;
 }
 
+/* Sul telefono la tabella scorre di lato invece di uscire dalla pagina */
+.doc-props-wrap {
+  margin-top: 14px;
+  overflow-x: auto;
+}
+
 .doc-props {
   width: 100%;
-  margin-top: 14px;
   border-collapse: collapse;
   font-size: 13.5px;
 }
@@ -477,5 +503,32 @@ body {
 
   .doc-stage {
     padding: 28px 16px;
+  }
+}
+
+/* Telefono: spazio per il bottone del caffè nella barra */
+@media (max-width: 560px) {
+  .doc-top {
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .doc-top-links {
+    gap: 14px;
+  }
+
+  .doc-brand small,
+  .doc-top-links .doc-hide-xs {
+    display: none;
+  }
+}
+
+@media (max-width: 370px) {
+  .doc-top-links .doc-coffee {
+    padding: 7px;
+  }
+
+  .doc-top-links .doc-coffee span {
+    display: none;
   }
 }

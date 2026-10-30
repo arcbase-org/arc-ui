@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  ArrowRight, Bell, CreditCard, Download, ExternalLink, Globe, Key, KeyRound, Laptop, LayoutDashboard,
+  ArrowRight, Bell, Coffee, CreditCard, Download, ExternalLink, Globe, Key, KeyRound, Laptop, LayoutDashboard,
   LogOut, Mail, Moon, Music, ShieldCheck, Sparkles, User, X, Zap,
 } from "lucide-react";
 import {
@@ -59,24 +59,26 @@ type PropRow = [name: string, type: string, description: string];
 
 function Props({ rows }: { rows: PropRow[] }) {
   return (
-    <table className="doc-props">
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Tipo</th>
-          <th>Descrizione</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map(([name, type, description]) => (
-          <tr key={name}>
-            <td><code>{name}</code></td>
-            <td><code>{type}</code></td>
-            <td>{description}</td>
+    <div className="doc-props-wrap">
+      <table className="doc-props">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Tipo</th>
+            <th>Descrizione</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map(([name, type, description]) => (
+            <tr key={name}>
+              <td><code>{name}</code></td>
+              <td><code>{type}</code></td>
+              <td>{description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -1218,9 +1220,13 @@ function App() {
         </a>
         <nav className="doc-top-links">
           <a href="/" className="doc-hide-sm">ArcBase</a>
-          <a href="../">arc UI</a>
+          <a href="../" className="doc-hide-xs">arc UI</a>
           <a href="https://github.com/arcbase-org/arc-ui" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.npmjs.com/package/@arcbaseorg/ui" target="_blank" rel="noopener noreferrer">npm</a>
+          <a className="doc-coffee" href="https://buymeacoffee.com/arcbase" target="_blank" rel="noopener noreferrer" aria-label="Offrici un caffè su Buy Me a Coffee">
+            <Coffee size={15} strokeWidth={2.2} aria-hidden="true" />
+            <span>Offrici un caffè</span>
+          </a>
         </nav>
       </header>
       <div className="doc-layout">
