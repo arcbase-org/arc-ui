@@ -1,0 +1,80 @@
+
+/* ══════════════════════════════════════════════
+   arc UI — aggiunte a login.ticly.it
+   Bottoni connessi in orizzontale (ButtonGroup orientation="horizontal"):
+   stesso aspetto di .premium-nav-item, con il "corner game" ruotato:
+   angoli esterni grandi a sinistra e a destra, pillola sull'attivo e
+   vicini che si modellano attorno.
+══════════════════════════════════════════════ */
+.arc-corner-row {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 3px;
+  position: relative;
+  max-width: 100%;
+}
+
+.arc-corner-row__item {
+  position: relative;
+  padding: 0.9rem 1.25rem;
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  border-radius: 6px;
+  user-select: none;
+  outline: none;
+  transition:
+    border-radius 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.2s ease,
+    box-shadow 0.3s ease,
+    transform 0.15s ease;
+}
+
+.arc-corner-row__item:first-child {
+  border-radius: 20px 6px 6px 20px;
+}
+
+.arc-corner-row__item:last-child {
+  border-radius: 6px 20px 20px 6px;
+}
+
+.arc-corner-row__item:only-child {
+  border-radius: 20px;
+}
+
+.arc-corner-row__item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ccc;
+}
+
+.arc-corner-row__item:active {
+  transform: scale(0.98);
+}
+
+.arc-corner-row__item.active {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+.arc-corner-row__item.active + .arc-corner-row__item {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.arc-corner-row:has(.arc-corner-row__item.active) .arc-corner-row__item:has(+ .arc-corner-row__item.active) {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
